@@ -40,3 +40,55 @@ const sayHello3 = (name: string): string => {
 
 const val1 = sayHello3('Michael Jackson')
 // const val2 = sayHello3(123) // Argument of type 'number' is not assignable to parameter of type 'string'.
+
+const someStrVal = 123 + '345' // string 型
+const someNumVal = Number(someStrVal) * 10 // number 型
+
+interface Person3 {
+  firstName: string
+  lastName: string
+  age: number
+}
+
+const getFullName = (person: Person3) => {
+  return `${person.firstName} ${person.lastName}`
+}
+
+const largeFullName = getFullName({ firstName: 'Michael', lastName: 'Jackson', age: 74}).toUpperCase()
+
+const literalName: 'Michael Jackson' = 'Michael Jackson'
+// const invalidLiteralName: 'MichaelJackson' = 'Stivie Wonder' // Type '"Stivie Wonder"' is not assignable to type '"MichaelJackson"'.
+const uppreCaseName = literalName.toUpperCase()
+
+const num: 123 = 123
+// const invalidNum: 123 = 456 // Type '456' is not assignable to type '123'.
+
+const personName3 = 'Michael Jackson'
+const personName4 = 'Steivie Wonder'
+
+const sayHelloToMichael = (personName: 'Michael Jackson') => {
+  console.log(`Hello, ${personName3}`)
+}
+
+sayHelloToMichael(personName3)
+// sayHelloToMichael(personName4) // Argument of type '"Steivie Wonder"' is not assignable to parameter of type '"Michael Jackson"'.
+
+let personName5 = 'Michael Jackson'
+let personName6 = 'Steivie Wonder'
+
+// sayHelloToMichael(personName5) // Argument of type 'string' is not assignable to parameter of type '"Michael Jackson"'.
+// sayHelloToMichael(personName6) // Argument of type 'string' is not assignable to parameter of type '"Michael Jackson"'.
+
+const person14 = {
+  name: 'Michael Jackson'
+}
+
+// sayHelloToMichael(person14.name) // Argument of type 'string' is not assignable to parameter of type '"Michael Jackson"'.
+
+let personName7 = 'Michael Jackson'
+personName7 = 'Steivie Wonder'
+
+const person15 = {
+  name: 'Michael Jackson'
+}
+person15.name = 'Steivie Wonder'
