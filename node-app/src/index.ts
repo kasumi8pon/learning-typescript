@@ -14,8 +14,22 @@ class HitAndBlow {
   private readonly answerSource = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
   private answer: string[] = []
   private tryCount = 0
+  private mode: 'normal' | 'hard'
+  private getAnswerLength() {
+    switch (this.mode) {
+      case 'normal':
+        return 3
+      case 'hard':
+        return 4
+    }
+  }
+
+  constructor(mode: 'normal' | 'hard') {
+    this.mode = mode
+  }
+
   setting() {
-    const answerLength = 3
+    const answerLength = this.getAnswerLength()
 
     while (this.answer.length < answerLength) {
       const randNum = Math.floor(Math.random() * this.answerSource.length)
@@ -26,7 +40,8 @@ class HitAndBlow {
     }
   }
   async play() {
-    const inputArr = (await promptInput('「,」区切りで3つの数字を入力してください')).split(',')
+    const answerLength = this.getAnswerLength()
+    const inputArr = (await promptInput(`「,」区切りで${answerLength}つの数字を入力してください'`)).split(',')
 
     if (!this.validate(inputArr)) {
       printLine('無効な入力です')
@@ -76,7 +91,7 @@ class HitAndBlow {
 }
 
 ;(async () => {
-  const hitAndBlow = new HitAndBlow()
+  const hitAndBlow = new HitAndBlow('normal')
   hitAndBlow.setting()
   await hitAndBlow.play()
   hitAndBlow.end()
