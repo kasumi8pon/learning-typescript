@@ -10,26 +10,26 @@ const promptInput = async (text: string) => {
   return input.trim()
 }
 
+type Mode = 'normal' | 'hard'
+
 class HitAndBlow {
   private readonly answerSource = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
   private answer: string[] = []
   private tryCount = 0
-  private mode: 'normal' | 'hard' | 'very hard'
+  private mode: Mode
   private getAnswerLength() {
     switch (this.mode) {
       case 'normal':
         return 3
       case 'hard':
         return 4
-      case 'very hard':
-        return 5
       default:
         const neverValue: never = this.mode
         throw new Error(`${neverValue} は無効なモードです。`)
     }
   }
 
-  constructor(mode: 'normal' | 'hard') {
+  constructor(mode: Mode) {
     this.mode = mode
   }
 
