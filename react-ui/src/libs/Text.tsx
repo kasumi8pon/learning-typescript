@@ -1,3 +1,7 @@
-export const Text = (props: { text: string }) => {
+type Props = {
+  text: string
+}
+
+export const Text = (props: Props) => {
   return <p>{props.text}</p>
 }
