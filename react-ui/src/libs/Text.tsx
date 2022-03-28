@@ -1,7 +1,9 @@
+import { VFC } from 'react'
+
 type Props = {
   text: string
 }
 
-export const Text = (props: Props) => {
-  return <p>{props.text}</p>
+export const Text: VFC<Props> = ({ text }) => {
+  return <p>{text}</p>
 }
