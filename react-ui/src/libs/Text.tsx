@@ -8,8 +8,9 @@ const Wrapper = styled.p`
 
 type Props = {
   text: string
+  className?: string
 }
 
-export const Text: VFC<Props> = ({ text }) => {
-  return <Wrapper>{text}</Wrapper>
+export const Text: VFC<Props> = ({ text, className = '' }) => {
+  return <Wrapper className={className}>{text}</Wrapper>
 }
